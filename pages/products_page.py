@@ -32,8 +32,8 @@ class ProductsPage(BasePage):
         self.page.click(self.CART_ICON)
 
     def logout(self) -> None:
-        self.page.wait_for_selector(self.MENU_BUTTON, timeout=10000)
+        #self.page.wait_for_selector(self.MENU_BUTTON, timeout=10000)
         self.page.click(self.MENU_BUTTON)
-        self.page.wait_for_selector(self.LOGOUT_LINK, timeout=10000)
+        #self.page.wait_for_selector(self.LOGOUT_LINK, timeout=10000)
         self.page.click(self.LOGOUT_LINK)
-        self.page.wait_for_load_state("networkidle")
+        #self.page.wait_for_load_state("networkidle")

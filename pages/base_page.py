@@ -10,11 +10,9 @@ class BasePage:
         return urljoin(base_url.rstrip('/') + '/', path.lstrip('/'))
 
     def navigate(self, url: str) -> None:
-        self.page.goto(url)
-        self.page.wait_for_load_state("networkidle")
-
-    def wait_for_element(self, selector: str, timeout: int = 10000):
-        return self.page.wait_for_selector(selector, timeout=timeout)
+        # Use 'commit' for fastest navigation (as soon as response is received)
+        # Reduced timeout to 5 seconds for faster failure detection
+        self.page.goto(url, wait_until="commit", timeout=5000)
 
     def get_title(self) -> str:
         return self.page.title()
